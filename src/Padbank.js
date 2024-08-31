@@ -1,7 +1,7 @@
 import React from "react";
 import DrumPad from "./DrumPad";
 
-function PadBank() {
+function PadBank({ isPowerOn, volume, onPadClick }) {
   const pads = [
     {
       id: "Q",
@@ -67,6 +67,7 @@ function PadBank() {
           id={pad.id}
           name={pad.name}
           soundUrl={pad.soundUrl}
+          onClick={() => onPadClick(pad)}
         />
       ))}
     </div>
