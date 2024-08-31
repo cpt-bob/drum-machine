@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DrumPad from "./DrumPad";
 
 function PadBank({ isPowerOn, volume, onPadClick }) {
+  const [currentPad, setCurrentPad] = useState(null);
+
   const pads = [
     {
       id: "Q",
@@ -58,6 +60,32 @@ function PadBank({ isPowerOn, volume, onPadClick }) {
         "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Cev_H2.mp3",
     },
   ];
+
+  const padMap = pads.reduce((map, pad) => {
+    map[pad.id] = document.getElementById(pad.id);
+    return map;
+  }, {});
+
+  const handleKeyDown = (event) => {
+    const key = event.key.toUpperCase();
+    if (isPowerOn && padMap[key]) {
+      const audio = padMap[key];
+      audio.currentTime = 0; // Reset audio to start
+      audio.volume = volume / 100;
+      audio.play().catch((error) => {
+        console.error(`Error playing audio: ${error}`);
+      });
+      setCurrentPad(pads.find((pad) => pad.id === key));
+      onPadClick(pads.find((pad) => pad.id === key));
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isPowerOn, volume]);
 
   return (
     <div className="pad-bank">

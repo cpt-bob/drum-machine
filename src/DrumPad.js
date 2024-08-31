@@ -19,9 +19,14 @@ function DrumPad({ id, soundUrl, name, isPowerOn, volume, onClick }) {
   };
 
   return (
-    <button className="drum-pad" onClick={playSound} disabled={!isPowerOn}>
+    <button
+      id="drum-pad"
+      className="drum-pad"
+      onClick={playSound}
+      disabled={!isPowerOn}
+    >
       {id}
-      <audio ref={audioRef} src={soundUrl} />
+      <audio className="clip" ref={audioRef} src={soundUrl} id={id} />
     </button>
   );
 }
