@@ -1,27 +1,100 @@
-body {
-  background-color: darkolivegreen;
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.pad-bank-container {
+  display: flex;
+  align-items: center;
 }
 
 .pad-bank {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
   gap: 10px;
-  justify-content: center;
 }
 
 .drum-pad {
   width: 100px;
   height: 100px;
-  background-color: #ccc;
-  border: 1px solid #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
+  border: none;
+  background-color: #333;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
   cursor: pointer;
-  user-select: none;
+  border-radius: 10px;
 }
 
 .drum-pad:active {
-  background-color: #aaa;
+  background-color: #555;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px
+}
+
+.display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #333;
+  background-color: #f0f0f0;
+  text-align: center;
+  width: 200px;
+  height: 25px;
+  /* Adjust width as needed */
+}
+
+.power-button {
+  margin-bottom: 20px;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  background-color: #555;
+  border: none;
+  cursor: pointer;
+}
+
+.power-button:hover {
+  background-color: #777;
+}
+
+label {
+  margin-top: 20px;
+  color: white;
+}
+
+.volume-slider {
+  margin-top: 5px;
+  padding: 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  height: 15px;
+}
+
+.power-on {
+  color: green;
+}
+
+.power-off {
+  color: red;
 }

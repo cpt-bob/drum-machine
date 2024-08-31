@@ -67,6 +67,8 @@ function PadBank({ isPowerOn, volume, onPadClick }) {
           id={pad.id}
           name={pad.name}
           soundUrl={pad.soundUrl}
+          isPowerOn={isPowerOn}
+          volume={volume}
           onClick={() => onPadClick(pad)}
         />
       ))}

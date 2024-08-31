@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 import PadBank from "./Padbank";
-import Controls from "./Controls";
 
 function App() {
   const [isPowerOn, setIsPowerOn] = useState(true);
@@ -12,8 +11,8 @@ function App() {
     setIsPowerOn(!isPowerOn);
   };
 
-  const handleVolumeChange = (volume) => {
-    setVolume(volume);
+  const handleVolumeChange = (event) => {
+    setVolume(event.target.value);
   };
 
   const handlePadClick = (pad) => {
@@ -22,17 +21,33 @@ function App() {
 
   return (
     <div id="drum-machine" className="app">
-      <PadBank
-        isPowerOn={isPowerOn}
-        volume={volume}
-        onPadClick={handlePadClick}
-      />
-      <Controls
-        onPowerToggle={handlePowerToggle}
-        onVolumeChange={handleVolumeChange}
-      />
-      <div id="display" className="display">
-        {currentPad ? currentPad.name : "Press a pad to start"}
+      <div className="container">
+        <div className="pad-bank-container">
+          <PadBank
+            isPowerOn={isPowerOn}
+            volume={volume}
+            onPadClick={handlePadClick}
+          />
+        </div>
+        <div className="controls-container">
+          <button
+            className={`power-button ${isPowerOn ? "power-on" : "power-off"}`}
+            onClick={handlePowerToggle}
+          >
+            {isPowerOn ? "Power On" : "Power Off"}
+          </button>
+          <div id="display" className="display">
+            {currentPad ? currentPad.name : "Drum Machine"}
+          </div>
+          <label htmlFor="volume-slider">Volume</label>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            onChange={handleVolumeChange}
+            className="volume-slider"
+          />
+        </div>
       </div>
     </div>
   );
