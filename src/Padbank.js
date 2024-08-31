@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DrumPad from "./DrumPad";
 
 function PadBank({ isPowerOn, volume, onPadClick }) {
-  const [currentPad, setCurrentPad] = useState(null);
+  const [setCurrentPad] = useState(null);
 
   const pads = [
     {

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-function DrumPad({ id, soundUrl, name, isPowerOn, volume, onClick }) {
+function DrumPad({ id, soundUrl, isPowerOn, volume, onClick }) {
   const audioRef = useRef(null);
 
   useEffect(() => {
