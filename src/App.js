@@ -21,7 +21,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div id="drum-machine" className="app">
       <PadBank
         isPowerOn={isPowerOn}
         volume={volume}
@@ -31,7 +31,7 @@ function App() {
         onPowerToggle={handlePowerToggle}
         onVolumeChange={handleVolumeChange}
       />
-      <div className="display">
+      <div id="display" className="display">
         {currentPad ? currentPad.name : "Press a pad to start"}
       </div>
     </div>
